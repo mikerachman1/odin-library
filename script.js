@@ -15,3 +15,19 @@ function addBookToLibrary(title, author, pages, read) {
   let newBook = new Book(title, author, pages, read)
   myLibrary.push(newBook)
 }
+
+addBookToLibrary('The Hobbit', 'J.R.R. Tolkein', '295', true);
+addBookToLibrary('Moby Dick', 'Herman Melville', '378', false);
+
+function displayLibrary(books) {
+  let str = '<ul>'
+
+  books.forEach(function(book) {
+    str += '<li>' + book.info() + '</li>'
+  })
+
+  str += '</ul>'
+  document.getElementById("bookContainer").innerHTML = str
+}
+
+displayLibrary(myLibrary)
