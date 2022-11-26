@@ -25,13 +25,17 @@ function displayLibrary(books) {
   books.forEach(function(book) {
     str += `<div class="book"> 
             <u>${book.title}</u>
-            <ul> <li> By: ${book.author} </li>
+            <ul> <li> Author: ${book.author} </li>
             <li> Pages: ${book.pages} </li>
-            <li> Read? ${book.read} </li> </ul>`
+            <li> Read? ${book.read} </li> 
+            </ul> </div>`
   })
 
   str += '</div>'
   document.getElementById("library").innerHTML = str
 }
+
+const newBookForm = document.querySelector('[name="new-book-form"]')
+
 
 displayLibrary(myLibrary)
