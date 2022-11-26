@@ -20,14 +20,18 @@ addBookToLibrary('The Hobbit', 'J.R.R. Tolkein', '295', true);
 addBookToLibrary('Moby Dick', 'Herman Melville', '378', false);
 
 function displayLibrary(books) {
-  let str = '<ul>'
+  let str = '<div class="book-container">'
 
   books.forEach(function(book) {
-    str += '<li>' + book.info() + '</li>'
+    str += `<div class="book"> 
+            <u>${book.title}</u>
+            <ul> <li> By: ${book.author} </li>
+            <li> Pages: ${book.pages} </li>
+            <li> Read? ${book.read} </li> </ul>`
   })
 
-  str += '</ul>'
-  document.getElementById("bookContainer").innerHTML = str
+  str += '</div>'
+  document.getElementById("library").innerHTML = str
 }
 
 displayLibrary(myLibrary)
