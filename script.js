@@ -37,5 +37,18 @@ function displayLibrary(books) {
 
 const newBookForm = document.querySelector('[name="new-book-form"]')
 
+newBookForm.addEventListener("submit", 
+  function(event) {
+    event.preventDefault()
+
+    const newTitle = event.currentTarget.title.value
+    const newAuthor = event.currentTarget.author.value
+    const newPages = event.currentTarget.pages.value
+    const newRead = event.currentTarget.read.checked
+
+    addBookToLibrary(newTitle, newAuthor, newPages, newRead);
+    displayLibrary(myLibrary)
+  })
+
 
 displayLibrary(myLibrary)
