@@ -23,7 +23,7 @@ function displayLibrary(books) {
   let str = '<div class="book-container">'
 
   books.forEach(function(book) {
-    str += `<div class="book"> 
+    str += `<div class="book" data-book-id="${books.indexOf(book)}"> 
             <u>${book.title}</u>
             <ul> <li> Author: ${book.author} </li>
             <li> Pages: ${book.pages} </li>
