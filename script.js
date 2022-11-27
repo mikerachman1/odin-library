@@ -35,6 +35,19 @@ function displayLibrary(books) {
   document.getElementById("library").innerHTML = str
 }
 
+function openForm() {
+  document.querySelector(".form-popup").style.display = "block"
+  document.querySelector(".new-cancel").style.display = "block"
+  document.querySelector(".new-open").style.display = "none"
+}
+
+function closeForm() {
+  document.querySelector(".form-popup").style.display = "none"
+  document.querySelector(".new-cancel").style.display = "none"
+  document.querySelector(".new-open").style.display = "block"
+
+}
+
 const newBookForm = document.querySelector('[name="new-book-form"]')
 
 newBookForm.addEventListener("submit", 
