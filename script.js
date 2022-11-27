@@ -11,6 +11,10 @@ function Book(title, author, pages, read) {
   }
 }
 
+Book.prototype.changeRead = function() {
+  this.read = (this.read) ? false : true
+}
+
 function addBookToLibrary(title, author, pages, read) {
   let newBook = new Book(title, author, pages, read)
   myLibrary.push(newBook)
@@ -29,12 +33,18 @@ function displayLibrary(books) {
             <li> Pages: ${book.pages} </li>
             <li> Read? ${book.read} </li> 
             </ul> 
+            <button onclick="changeBookRead(${books.indexOf(book)})">Change Read Status</button>
             <button onclick="removeBook(${books.indexOf(book)})">Remove Book</button>
             </div>`
   })
 
   str += '</div>'
   document.getElementById("library").innerHTML = str
+}
+
+function changeBookRead(bookId) {
+  myLibrary[bookId].changeRead()
+  displayLibrary(myLibrary)
 }
 
 function removeBook(bookId) {
