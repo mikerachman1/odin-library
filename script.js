@@ -28,11 +28,18 @@ function displayLibrary(books) {
             <ul> <li> Author: ${book.author} </li>
             <li> Pages: ${book.pages} </li>
             <li> Read? ${book.read} </li> 
-            </ul> </div>`
+            </ul> 
+            <button onclick="removeBook(${books.indexOf(book)})">Remove Book</button>
+            </div>`
   })
 
   str += '</div>'
   document.getElementById("library").innerHTML = str
+}
+
+function removeBook(bookId) {
+  myLibrary.splice(bookId, 1)
+  displayLibrary(myLibrary)
 }
 
 function openForm() {
