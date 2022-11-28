@@ -29,11 +29,10 @@ function displayLibrary(books) {
   books.forEach(function(book) {
     str += `<div class="book" data-book-id="${books.indexOf(book)}"> 
             <u>${book.title}</u>
-            <ul> <li> Author: ${book.author} </li>
-            <li> Pages: ${book.pages} </li>
-            <li> Read? ${book.read} </li> 
-            </ul> 
-            <button onclick="changeBookRead(${books.indexOf(book)})">Change Read Status</button>
+            <p> Author: ${book.author} </p>
+            <p> Pages: ${book.pages} </p>
+            <p> Read? ${book.read} </p> 
+            <button onclick="changeBookRead(${books.indexOf(book)})">Change Read Status</button><br><br>
             <button onclick="removeBook(${books.indexOf(book)})">Remove Book</button>
             </div>`
   })
@@ -53,16 +52,13 @@ function removeBook(bookId) {
 }
 
 function openForm() {
-  document.querySelector(".form-popup").style.display = "block"
-  document.querySelector(".new-cancel").style.display = "block"
-  document.querySelector(".new-open").style.display = "none"
+  document.querySelector(".form-popup").style.visibility = "visible"
+  document.querySelector(".overlay").style.visibility = "visible"
 }
 
 function closeForm() {
-  document.querySelector(".form-popup").style.display = "none"
-  document.querySelector(".new-cancel").style.display = "none"
-  document.querySelector(".new-open").style.display = "block"
-
+  document.querySelector(".form-popup").style.visibility = "hidden"
+  document.querySelector(".overlay").style.visibility = "hidden"
 }
 
 const newBookForm = document.querySelector('[name="new-book-form"]')
@@ -78,6 +74,7 @@ newBookForm.addEventListener("submit",
 
     addBookToLibrary(newTitle, newAuthor, newPages, newRead);
     displayLibrary(myLibrary)
+    closeForm()
   })
 
 
