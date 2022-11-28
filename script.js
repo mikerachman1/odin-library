@@ -23,15 +23,28 @@ function addBookToLibrary(title, author, pages, read) {
 addBookToLibrary('The Hobbit', 'J.R.R. Tolkein', '295', true);
 addBookToLibrary('Moby Dick', 'Herman Melville', '378', false);
 
+function colorReadStatus() {
+  let readStatuses = document.querySelectorAll(".read-status")
+  readStatuses.forEach((readStatus) => {
+    if (readStatus.innerHTML == "True") {
+      readStatus.style.color = 'green'
+    } else {
+      readStatus.style.color = 'red'
+    }
+  })
+}
+
 function displayLibrary(books) {
   let str = '<div class="book-container">'
 
   books.forEach(function(book) {
+    let read = String(book.read)
+    let readCapitalized = read.charAt(0).toUpperCase() + read.slice(1)
     str += `<div class="book" data-book-id="${books.indexOf(book)}"> 
             <u>${book.title}</u>
             <p> Author: ${book.author} </p>
             <p> Pages: ${book.pages} </p>
-            <p> Read? ${book.read} </p> 
+            <p> Read? <span class="read-status">${readCapitalized}</span> </p> 
             <button onclick="changeBookRead(${books.indexOf(book)})">Change Read Status</button><br><br>
             <button onclick="removeBook(${books.indexOf(book)})">Remove Book</button>
             </div>`
@@ -39,7 +52,9 @@ function displayLibrary(books) {
 
   str += '</div>'
   document.getElementById("library").innerHTML = str
+  colorReadStatus()
 }
+
 
 function changeBookRead(bookId) {
   myLibrary[bookId].changeRead()
